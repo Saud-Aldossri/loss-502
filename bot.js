@@ -18,14 +18,33 @@ client.on('message', msg => {
 
 
 
-// Create an event listener for messages
 client.on('message', message => {
-  // If the message is "#avatar"
-  if (message.content === '#avatar') {
-    // Send the user's avatar URL
-    message.reply(message.author.avatarURL);
-  }
-});
+	  // If the message is "A!avatar"
+	  if (message.content === '#avatar') {
+		// Send the user's avatar URL
+		message.reply(message.author.avatarURL);
+	  }
+	});
+
+
+
+
+client.on('message', async message => {
+  if(message.content.startsWith(prefix + "sugg")) {
+  await  message.channel.send(`اكتب اقتراحك الان`)
+    let filter = m => m.author.id === message.author.id
+      var text = '.';
+        let sugsa = message.channel.awaitMessages(filter, { max: 1, time: 60000})
+          .then(co => {
+            text = co.first().content
+
+              message.channel.send(`تم حفظ اقتراحك سيتم مراجعته من قبل الادارة`)
+                client.channels.get("492265800347156500").send(`${message.author.username}'s sug => ${text}`)
+
+              })
+            }
+          })
+
 
 
 
