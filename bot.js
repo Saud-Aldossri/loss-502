@@ -18,15 +18,6 @@ client.on('message', msg => {
 
 
 
-client.on('message', message => {
-	  // If the message is "+avatar"
-	  if (message.content === '#avatar') {
-		// Send the user's avatar URL
-		message.reply(message.author.avatarURL);
-	  }
-	});
-
-
 
 
 client.on('message', async message => {
@@ -44,6 +35,47 @@ client.on('message', async message => {
               })
             }
           })
+
+
+
+
+
+
+client.on('message', message => {
+
+    if (message.content === "mc") {
+                        if(!message.channel.guild) return message.reply(' هذا الامر فقط للسيرفرات !!');
+
+if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(' ليس لديك صلاحيات');
+           message.channel.overwritePermissions(message.guild.id, {
+         SEND_MESSAGES: false
+
+           }).then(() => {
+               message.reply("تم تقفيل الشات ✅ ")
+           });
+             }
+if (message.content === "umc") {
+    if(!message.channel.guild) return message.reply(' هذا الامر فقط للسيرفرات !!');
+
+if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('ليس لديك صلاحيات');
+           message.channel.overwritePermissions(message.guild.id, {
+         SEND_MESSAGES: true
+
+           }).then(() => {
+               message.reply("تم فتح الشات✅")
+           });
+             }
+
+
+
+});	
+
+
+
+
+
+
+
 
 
 
