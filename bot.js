@@ -190,7 +190,7 @@ client.on("message", message => {
           
 
            if (message.content.startsWith(prefix + "id")) {
-           if (message.channel.id !== "ايدي الروم الي تبي فيه الامر") return;
+           if (message.channel.id !== "492814243662528532") return;
             
             if(!message.channel.guild) return message.reply(`هذا الأمر فقط ل السيرفرات ❌`);
 
