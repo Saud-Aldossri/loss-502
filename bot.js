@@ -156,4 +156,8 @@ client.on('ready', function(){
 
 
 
+
+
+
+
 client.login('NDkzMDIwNjk3MzEzMDE3ODY2.Doe47Q.psu0ukizKnExznUDet3Aw8tf4po'); //
