@@ -19,7 +19,7 @@ client.on('message', msg => {
 
 
 client.on('message', message => {
-	  // If the message is "A!avatar"
+	  // If the message is "+avatar"
 	  if (message.content === '#avatar') {
 		// Send the user's avatar URL
 		message.reply(message.author.avatarURL);
@@ -39,7 +39,7 @@ client.on('message', async message => {
             text = co.first().content
 
               message.channel.send(`تم حفظ اقتراحك سيتم مراجعته من قبل الادارة`)
-                client.channels.get("492265800347156500").send(`${message.author.username}'s sug => ${text}`)
+                client.channels.get("492814243662528532").send(`${message.author.username}'s sug => ${text}`)
 
               })
             }
