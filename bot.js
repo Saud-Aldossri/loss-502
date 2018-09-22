@@ -179,7 +179,7 @@ client.on("message", message => {
         color: 0x06DF00,
         description: "تم مسح الرسائل بنجاح",
         footer: {
-          text: "Mrzizx" // غير هنا حط اسم البوت
+          text: "#OMG Community" // غير هنا حط اسم البوت
         }
       }}).then(msg => {msg.delete(3000)});
                           }
