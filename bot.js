@@ -17,4 +17,16 @@ client.on('message', msg => {
 });
 
 
+
+// Create an event listener for messages
+client.on('message', message => {
+  // If the message is "#avatar"
+  if (message.content === '#avatar') {
+    // Send the user's avatar URL
+    message.reply(message.author.avatarURL);
+  }
+});
+
+
+
 client.login('NDkzMDIwNjk3MzEzMDE3ODY2.Doe47Q.psu0ukizKnExznUDet3Aw8tf4po'); //
