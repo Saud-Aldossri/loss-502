@@ -18,7 +18,14 @@ client.on('message', msg => {
 
 
 
-
+	// Create an event listener for messages
+	client.on('message', message => {
+	  // If the message is "A!avatar"
+	  if (message.content === '#avatar') {
+		// Send the user's avatar URL
+		message.reply(message.author.avatarURL);
+	  }
+	});
 
 
 client.on('ready',async () => {
@@ -96,7 +103,7 @@ client.on('ready',async () => {
             if (message.content.startsWith(prefix + "help")) {
      let embed = new Discord.RichEmbed()
 .setThumbnail(message.author.avatarURL)
-.addField('** +sugg للاقتراحات** ')
+.addField('** &sugg للاقتراحات** ')
 .addField('** حط الي تبي ** ')
 .addField('** حط الي تبي **') 
 .addField('** حط الي تبي **') 
