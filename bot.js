@@ -71,6 +71,43 @@ message.channel.send(`${user} You get ${inviteCount} invite.`);
 
 
 
+client.on('message', message=> {
+    if (message.author.bot) return;
+    if (message.isMentioned(client.user))
+    {
+    message.reply(" هلا !!");
+    }
+})
+Rocket.on('message', message => {//help msg
+  if (message.author.bot) return;
+   if (message.content === prefix + "help") {
+      message.react(":ballot_box_with_check:")
+
+
+
+
+      message.author.sendMessage(شكرا لك لاستعمال البوت);
+
+}
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function timeCon(time) {
     let days = Math.floor(time % 31536000 / 86400)
     let hours = Math.floor(time % 31536000 % 86400 / 3600)
