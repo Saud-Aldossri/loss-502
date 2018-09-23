@@ -130,6 +130,24 @@ client.on('message', async message => {
 
 
 
+
+client.on('message', message=> {
+    if (message.author.bot) return;
+    if (message.isMentioned(client.user))
+    {
+    message.reply("سـم اخوي ؟");
+    }
+})
+
+
+
+
+
+
+
+
+
+
  client.on("message", function(message) {
 
   const bannedwords = [
