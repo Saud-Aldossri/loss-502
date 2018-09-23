@@ -171,16 +171,7 @@ client.on('message', message=> {
 
 
 
-);
 
-}
-});
-if (message.content === prefix + "help") {
-      message.react(":ballot_box_with_check:")
-);
-
-}
-});
 
 
 
@@ -206,40 +197,6 @@ client.on('message', message => {
 
   }
 });
-
-
-
-
-
-
-client.on('message', message=> {
-    if (message.author.bot) return;
-    if (message.isMentioned(client.user))
-    {
-    message.reply("هلا");
-    }
-})
-Rocket.on('message', message => {//help msg
-  if (message.author.bot) return;
-   if (message.content === prefix + "help") {
-      message.react(":ballot_box_with_check:")
-
-
-
-
-      message.author.sendMessage(شكرا لك لاستعمال البوت);
-
-}
-});
-
-
-
-
-
-
-
-
-
 
 
 
