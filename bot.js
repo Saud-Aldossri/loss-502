@@ -76,10 +76,6 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('لي�
 
 
 
-
-
-
-
  client.on('message',async message => {
   if(message.content.startsWith(prefix + "bc")) {
     let filter = m => m.author.id === message.author.id;
@@ -120,11 +116,6 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('لي�
     });
   }
 });
-
-
-
-
-
 
 
 
@@ -195,11 +186,6 @@ const moment = require('moment');
   
  
  
-
-
-
-
-
 
 
 client.login(process.env.BOT_TOKEN);
