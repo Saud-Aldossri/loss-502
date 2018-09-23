@@ -129,5 +129,32 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('لي�
 
 
 
+const bannedwords = [
+    "!play",
+    "m!play",
+    "#user",
+    "#profile",
+    "",
+    "حط الكلمه الممنوعه هنا"
+
+  ];
+
+  if(bannedwords.some(word => message.content.includes(word))) {
+    message.delete()
+    message.reply("هذا ليس شات للاوامر");
+  };
+});
+
+
+
+
+
+
+
+
+
+
+
+
 // THIS  MUST  BE  THIS  WAY
 client.login(process.env.BOT_TOKEN);
