@@ -84,10 +84,6 @@ Rocket.on('message', message => {//help msg
       message.react(":ballot_box_with_check:")
 
 
-
-
-      message.author.sendMessage(شكرا لك لاستعمال البوت);
-
 }
 });
 
