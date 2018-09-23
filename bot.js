@@ -171,7 +171,8 @@ client.on('message', message=> {
 
 
 
-
+if (message.content === prefix + "rec") {
+      message.react(":ballot_box_with_check:")
 
 
 
