@@ -96,20 +96,47 @@ client.on('message', message => {
 
 
 
-client.on('message', message => {
+const Canvas = require('canvas') // بكج
+const fs = module.require("fs"); //بكج
+const r1 = require('snekfetch'); //بكج
  
-if (message.content.startsWith("+profile")) { // 
- let canvas = new Canvas(300, 300) //
+ 
+//var يعني تختصر للحاجه زي منا عامل كدة
+ 
+var copy = "s2ud | 502#0150"
+ 
+ 
+var mo = "الفلوس"
+var po = "النقاط"
+var lev = "الفل"
+ 
+ 
+bot.on("ready", async () => { // كل حاجه هتتفح لما البوت يشتغل
+ 
+    console.log(`I'm Online \n By ${copy}`) // الي هيظهر في الكونسل
+    console.log(`Logged in as ${bot.user.tag}!`); // نفس الي فوق
+ 
+    bot.user.setGame(`${bot.users.size} users `,"http://twitch.tv/") // الي هيظهر في بلاينق
+    bot.user.setStatus("online") // حاله البوت (اونلاين
+ 
+}); // نهايه الكود
+ 
+ 
+ 
+bot.on('message', message => {
+ 
+if (message.content.startsWith("+profile")) { // الامر
+ let canvas = new Canvas(300, 300) //حجم الصوره الي هتظهر
  let ctx = canvas.getContext('2d')
     let Image = Canvas.Image
    
    
                       //  ava.src = buf;
  
-    fs.readFile(__dirname + '/images_profile/profile.png', function(err, picture) { //
+    fs.readFile(__dirname + '/images_profile/profile.png', function(err, picture) { //مكان الصوره
       if (err) throw err
       var img = new Image
-                var url = message.author.avatarURL; // 
+                var url = message.author.avatarURL; //افتار صورتك
         url = url.substring(0, url.indexOf('?'));
  
         r1.get(url).then(res => {
