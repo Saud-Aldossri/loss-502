@@ -174,6 +174,7 @@ client.on('message', message=> {
 if (message.content === prefix + "rec") {
       message.react(":ballot_box_with_check:")
 
+      message.author.sendMessage(شكرا لك لاستعمال البوت
 
 
 
