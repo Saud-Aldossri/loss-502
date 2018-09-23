@@ -90,6 +90,33 @@ client.on('message', async message => {
 
 
 
+ client.on("message", function(message) {
+
+  const bannedwords = [
+    "!play",
+    "m!play",
+    "#user",
+    "#profile",
+    "#top",
+    "حط الكلمه الممنوعه هنا"
+
+  ];
+
+  if(bannedwords.some(word => message.content.includes(word))) {
+    message.delete()
+    message.reply("هذا ليس شات للاوامر");
+  };
+});
+
+
+
+
+
+
+
+
+
+
 
 
 
