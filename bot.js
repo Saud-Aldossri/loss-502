@@ -96,20 +96,20 @@ client.on('message', message => {
 
 
 
-bot.on('message', message => {
+client.on('message', message => {
  
-if (message.content.startsWith("+profile")) { // الامر
- let canvas = new Canvas(300, 300) //حجم الصوره الي هتظهر
+if (message.content.startsWith("+profile")) { // 
+ let canvas = new Canvas(300, 300) //
  let ctx = canvas.getContext('2d')
     let Image = Canvas.Image
    
    
                       //  ava.src = buf;
  
-    fs.readFile(__dirname + '/images_profile/profile.png', function(err, picture) { //مكان الصوره
+    fs.readFile(__dirname + '/images_profile/profile.png', function(err, picture) { //
       if (err) throw err
       var img = new Image
-                var url = message.author.avatarURL; //افتار صورتك
+                var url = message.author.avatarURL; // 
         url = url.substring(0, url.indexOf('?'));
  
         r1.get(url).then(res => {
