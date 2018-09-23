@@ -202,4 +202,4 @@ const moment = require('moment');
 
 
 
-client.login('NDkzMDIwNjk3MzEzMDE3ODY2.Doe47Q.psu0ukizKnExznUDet3Aw8tf4po'); //
+client.login(process.env.BOT_TOKEN);
