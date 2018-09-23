@@ -26,7 +26,7 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(' لي
          SEND_MESSAGES: false
 
            }).then(() => {
-               message.reply("تم تقفيل الشات ✅ ")
+               message.reply("تم آغلاق الشات ✅ ")
            });
              }
 if (message.content === "umc") {
