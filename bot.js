@@ -134,7 +134,7 @@ const bannedwords = [
     "m!play",
     "#user",
     "#profile",
-    "",
+    "#id",
     "حط الكلمه الممنوعه هنا"
 
   ];
