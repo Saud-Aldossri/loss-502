@@ -60,7 +60,7 @@ client.on('message', message => {
             .addField('``My ID``' , `[ ${client.user.id} ]` , true)
                   .addField('``My Prefix``' , `+` , true)
                   .addField('``My Language``' , `[ Java Script ]` , true)
-                  .setFooter('By | NoThing')
+                  .setFooter('By | Loss:502')
     })
 }
 });
