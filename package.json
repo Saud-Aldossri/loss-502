@@ -1,0 +1,27 @@
+{
+  "name": "NoThing",
+  "version": "1.0.0",
+  "description": "Silver Bot By NoThing",
+  "main": "hotahri.js",
+  "dependencies": {
+    "discord.js": "^11.3.2",
+    "ffmpeg": "^0.0.4",
+    "ffmpeg-binaries": "^4.0.0",
+    "get-youtube-id": "^1.0.0",
+    "gif-search": "^2.0.1",
+    "google-translate-api": "^2.3.0",
+    "node-gyp": "^3.7.0",
+    "npm": "^6.3.0",
+    "opusscript": "^0.0.6",
+    "rebuild": "^0.1.2",
+    "simple-youtube-api": "^5.0.2",
+    "youtube-info": "^1.2.0",
+    "ytdl-core": "^0.21.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "NoThing",
+  "license": "ISC"
+}
