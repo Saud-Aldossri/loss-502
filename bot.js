@@ -210,7 +210,7 @@ client.on('ready',async () => {
   console.log(client.user.username);
   try {
     const config = {
-      name: "RAINBOW", // اسم الرتبة
+      name: "BOT", // اسم الرتبة
       guildid: "398499045129322496", // اي دي السيرفر
       sec: 2 // عدد الثواني
     };
