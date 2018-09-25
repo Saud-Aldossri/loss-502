@@ -434,7 +434,7 @@ client.on('message', msg => {
   //كود استريمنق
 client.on('ready',  () => {
             console.log(`back`);
-    client.user.setGame("codes", "https://www.twitch.tv/idk");
+    client.user.setGame("NoThing", "https://www.twitch.tv/saudaldossri");
 });
 
 
