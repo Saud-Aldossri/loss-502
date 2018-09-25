@@ -373,20 +373,27 @@ client.on('message', message => {
 
 
 
-client.on ('message',async Sal => { //By loss:502
-    let embed = new Discord.RichEmbed()
-    if (Sal.content === "+id") {
-      let embed = new Discord.RichEmbed()
-     .setColor("RANDOM")
-     .setThumbnail(Sal.author.avatarURL)
-     .setImage(Sal.author.avatarURL)
-     .addField("اسمك:",`${Sal.author.username}`, true)
-     .addField('ايديك:',"" +  Sal.author.id, true)
-     .addField('تاقك', Sal.author.discriminator, true)
-     .addField('تم الانشاء في', Sal.author.createdAt, true)
-     Sal.channel.sendEmbed(embed);
-    }
-  });
+client.on('message', message => {
+    if (message.content.startsWith("+id")) {
+    message.channel.send({
+        embed: new Discord.RichEmbed()
+            .setAuthor(client.user.username,client.user.avatarURL)
+            .setThumbnail(client.user.avatarURL)
+            .setColor('RANDOM')
+            .setTitle('``INFO Name Bot`` ')
+            .addField('``My Ping``' , [`${Date.now() - message.createdTimestamp}` + 'MS'], true)
+            .addField('``RAM Usage``', `[${(process.memoryUsage().rss / 1048576).toFixed()}MB]`, true)
+            .addField('``servers``', [client.guilds.size], true) 
+            .addField('``My Name``' , `[ ${client.user.tag} ]` , true)
+            .addField('``My ID``' , `[ ${client.user.id} ]` , true)
+            .addField("``Your Name``", `${message.author.username}`)
+            .addField('``your tag``', message.author.discriminator)
+            .addField('``Your id``', message.author.id)
+            .addField('``Bot``', message.author.bot)
+            .addField('``date of registration``', message.author.createdAt)
+    })
+}
+});
 
 
 
