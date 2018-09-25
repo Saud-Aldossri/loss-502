@@ -478,5 +478,29 @@ client.on('message', msg => {
 
 
 
+
+
+client.on('message', message => {
+    if (message.content.startsWith("invite")) {
+
+    message.guild.fetchInvites()
+    .then(invites => message.channel.send(`**:busts_in_silhouette:  اتيت ب     [${invites.find(invite => invite.inviter.id === message.author.id)}]    :calling:   عضو لهذا السيرفر    `))
+         
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // THIS  MUST  BE  THIS  WAY
 client.login(process.env.BOT_TOKEN);
