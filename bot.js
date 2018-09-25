@@ -373,6 +373,30 @@ client.on('message', message => {
 
 
 
+client.on ('message',async Sal => { //By loss:502
+    let embed = new Discord.RichEmbed()
+    if (Sal.content === "+id") {
+      let embed = new Discord.RichEmbed()
+     .setColor("RANDOM")
+     .setThumbnail(Sal.author.avatarURL)
+     .setImage(Sal.author.avatarURL)
+     .addField("اسمك:",`${Sal.author.username}`, true)
+     .addField('ايديك:',"" +  Sal.author.id, true)
+     .addField('تاقك', Sal.author.discriminator, true)
+     .addField('تم الانشاء في', Sal.author.createdAt, true)
+     Sal.channel.sendEmbed(embed);
+    }
+  });
+
+
+
+
+
+
+
+
+
+
 
 
 
