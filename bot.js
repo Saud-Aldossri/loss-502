@@ -15,7 +15,6 @@ client.on('message', message => {
 
 
 
-
  client.on('message', message => {
 
     if (message.content === "mc") {
@@ -44,9 +43,6 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('لي�
 
 
 });	
-
-
-
 
 
 
@@ -129,8 +125,6 @@ client.on('message', async message => {
 
 
 
-
-
 client.on('message', message=> {
     if (message.author.bot) return;
     if (message.isMentioned(client.user))
@@ -138,9 +132,6 @@ client.on('message', message=> {
     message.reply("سـم اخوي ؟");
     }
 })
-
-
-
 
 
 
@@ -197,9 +188,6 @@ client.on('message', message => {
 
   }
 });
-
-
-
 
 
 
@@ -276,7 +264,6 @@ const prefix = "+";
 
 
 
-
 client.on('message', message => {
   if (message.author.x5bz) return;
   if (!message.content.startsWith(prefix)) return;
@@ -315,8 +302,6 @@ client.on('message', message => {
   })
 }
 });
-
-
 
 
 
@@ -443,37 +428,6 @@ client.on('message', msg => {
 })
 
 
-
-
-
-
-
- const arraySort = require('array-sort'),
-table = require('table');
-
-client.on('message' , async (message) => {
-
-    if(message.content.startsWith(prefix + "topinvite")) {
-
-  let invites = await message.guild.fetchInvites();
-
-    invites = invites.array();
-
-    arraySort(invites, 'uses', { reverse: true });
-
-    let possibleInvites = [['الدعوات', 'الاشخاص']];
-    invites.forEach(i => {
-      possibleInvites.push([i.inviter.username , i.uses]);
-    })
-    const embed = new Discord.RichEmbed()
-    .setColor(0x7289da)
-    .setTitle("دعوات السيرفر")
-    .addField(' المتصدرين' , `${table.table(possibleInvites)}`)
-
-    message.channel.send(embed)
-    }
-});
-  
 
 
 
