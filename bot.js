@@ -374,7 +374,7 @@ client.on('message', message => {
 
 
 client.on("message", msg => {
-  if(msg.content === '$' + "id") {
+  if(msg.content === '+' + "id") {
       const embed = new Discord.RichEmbed();
   embed.addField("🔱| اسم الحساب :", `${msg.author.username}#${msg.author.discriminator}`, true)
           .addField("🆔| الاي دي :", `${msg.author.id}`, true)
