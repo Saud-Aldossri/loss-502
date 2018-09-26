@@ -14,7 +14,6 @@ client.on('message', message => {
 
 
 
-
  client.on('message', message => {
 
     if (message.content === "mc") {
@@ -43,9 +42,6 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('لي�
 
 
 });	
-
-
-
 
 
 
@@ -136,9 +132,6 @@ client.on('message', message=> {
 
 
 
-
-
-
  client.on("message", function(message) {
 
   const bannedwords = [
@@ -156,15 +149,6 @@ client.on('message', message=> {
     message.reply("هذا ليس شات للاوامر");
   };
 });
-
-
-
-
-
-
-
-
-
 
 
 
@@ -188,8 +172,6 @@ client.on('message', message => {
 
   }
 });
-
-
 
 
 
@@ -262,8 +244,6 @@ const prefix = "+";
 
 
 
-
-
 client.on('message', message => {
   if (message.author.x5bz) return;
   if (!message.content.startsWith(prefix)) return;
@@ -302,11 +282,6 @@ client.on('message', message => {
   })
 }
 });
-
-
-
-
-
 
 
 
@@ -355,9 +330,6 @@ client.on('message', message => {
 
 
 
-
-
-
 client.on('message', message => {
 var prefix = "+";
 
@@ -390,8 +362,6 @@ return;
 
 
 
-
-
 client.on('message', msg => { 
     if (msg.content.startsWith(`+warn`)) {
       if(!msg.member.hasPermission("MANAGE_MESSAGES")) return;
@@ -413,15 +383,11 @@ client.on('message', msg => {
 
 
 
-
   //كود استريمنق
 client.on('ready',  () => {
             console.log(`back`);
     client.user.setGame("NoThing", "https://www.twitch.tv/saudaldossri");
 });
-
-
-
 
 
 
@@ -445,44 +411,6 @@ client.on('message', message => {
 });
 
 
-
-
-
-
-
-
-
-
-const moment = require('moment');
-    client.on('message', message => {
-          if (message.content.startsWith("+id")) {
-            if(!message.channel.guild) return message.reply('هذا الامر للسيرفرات فقط')
-    var args = message.content.split(" ").slice(1);
-    let user = message.mentions.users.first();
-    var men = message.mentions.users.first();
-       var heg;
-       if(men) {
-           heg = men
-       } else {
-           heg = message.author
-       }
-     var mentionned = message.mentions.members.first();
-        var h;
-       if(mentionned) {
-           h = mentionned
-       } else {
-           h = message.member
-       }
-              moment.locale('ar-TN');
-     var id = new  Discord.RichEmbed()
-   .setColor("RANDOM")
-   .setThumbnail(message.author.avatarURL)
-   .setAuthor(` ${message.author.username} `, message.author.avatarURL)
-   .addField(': تاريخ دخولك للديسكورد', `${moment(heg.createdTimestamp).format('YYYY/M/D HH:mm')} **\n** \`${moment(heg.createdTimestamp).fromNow()}\`` ,true)
-   .addField(': تاريخ دخولك لسيرفرنا', `${moment(h.joinedAt).format('YYYY/M/D HH:mm')} \n \`${moment(h.joinedAt).fromNow()}\``, true)
-   .setFooter(`${message.author.username}`, 'https://images-ext-2.discordapp.net/external/JpyzxW2wMRG2874gSTdNTpC_q9AHl8x8V4SMmtRtlVk/https/orcid.org/sites/default/files/files/ID_symbol_B-W_128x128.gif')
-   message.channel.send(id)
-}       });
 
 
 
