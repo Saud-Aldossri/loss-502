@@ -44,21 +44,7 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('لي�
 });	
 
 
-
-
-
-  client.on('message', message => {
-   if(message.content.startsWith(prefix + "invite")) {
-    message.guild.fetchInvites().then(invs => {
-      let user = message.mentions.users.first() || message.author
-      let personalInvites = invs.filter(i => i.inviter.id === user.id);
-      let inviteCount = personalInvites.reduce((p, v) => v.uses + p, 0);
-message.channel.send(`${user} You get ${inviteCount} invite.`);
-});
-  }
-});
   
-
 
 
 
@@ -131,24 +117,6 @@ client.on('message', message=> {
 
 
 
-
- client.on("message", function(message) {
-
-  const bannedwords = [
-    "!play",
-    "m!play",
-    "#user",
-    "#profile",
-    "#top",
-    "حط الكلمه الممنوعه هنا"
-
-  ];
-
-  if(bannedwords.some(word => message.content.includes(word))) {
-    message.delete()
-    message.reply("هذا ليس شات للاوامر");
-  };
-});
 
 
 
@@ -285,46 +253,6 @@ client.on('message', message => {
 
 
 
-
-const bannedwords = [//Alpha Codes
-  "#credit",//Alpha Codes
-  "#profile",//Alpha Codes
-//Alpha Codes
-  "#rep",//Alpha Codes
-  "#top",//Alpha Codes
-  "%level",//Alpha Codes
-  "%تقديم",//Alpha Codes
-  "-play",//Alpha Codes
-  "-stop",//Alpha Codes
-  "-p",//Alpha Codes
-  "-s",//Alpha Codes
-  "!invites",//Alpha Codes
-  "!top",//Alpha Codes
-  "G.play",//Alpha Codes
-  "G.stop",
-  "G.skip",
-  "-skip"//Alpha Codes
-//Alpha Codes
-
-]
-client.on('message', message => {
-  var Muted = message.guild.roles.find("name", "muted");
-  var warn = message.guild.roles.find("name", "warn");
-  if(bannedwords.some(word => message.content.includes(word))) {
-  if(message.channel.id !== '407897417745301504') return;
-  if (message.author.bot) return;
-  if(message.member.roles.has(warn)) return;
-  if(!message.member.roles.has(warn.id)) {
-  message.member.addRole(warn)
-  message.reply("**`تم اعطائك تحذير لاستخدام اوامر البوت فى الشات العام` 😠**")
-  }
-  if(message.member.roles.has(warn.id)) {
-      message.member.addRole(Muted)
-      message.member.removeRole(warn)
-      message.reply("**`تم اعطائك ميوت كتابى تواصل مع احد اعضاء الادارة لازالتة` 🤐**")
-  }
-  }
-  })
 
 
 
