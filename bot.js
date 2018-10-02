@@ -484,6 +484,19 @@ var prefix = "+";
 
 
 
+client.on('ready',  () => {
+            console.log(`back`);
+    client.user.setGame("0MG", "https://www.twitch.tv/idk");
+});
+
+
+
+
+
+
+
+
+
 
 
 // THIS  MUST  BE  THIS  WAY
