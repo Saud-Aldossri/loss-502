@@ -484,33 +484,6 @@ var prefix = "+";
 
 
 
-hero.on('message', message => {
-  if(message.author.bot) return;
-  if(message.channel.type === 'dm') return;
-    if(message.content.toLowerCase().startsWith(prefix + "uptime")) {
-      let upTime = process.uptime();
-  
-      let days = Math.floor(upTime / 86400);
-      upTime %= 86400;
-  
-      let hrs = Math.floor(upTime / 3600);
-      upTime %= 3600;
-  
-      let min = Math.floor(upTime / 60);
-      let sec = Math.floor(upTime % 60);
-  
-      message.channel.send(`\`${days} days, ${hrs} hrs, ${min} min, ${sec} sec\``);
-    }
-});
-
-
-
-
-
-
-
-
-
 
 
 
