@@ -486,19 +486,6 @@ var prefix = "+";
 
 
 
-
-
-client.on('ready',  () => {
-            console.log(`back`);
-    client.user.setGame("0MG", "https://www.twitch.tv/idk");
-});
-
-
-
-
-
-
-
 const adminprefix = "+";
 const devs = ['303197992809267202','273380454151749633'];
 client.on('message', message => {
