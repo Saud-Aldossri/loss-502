@@ -552,12 +552,6 @@ client.on("message", message => { // Leaked by [ @Loss ]
 
 
 
-// help command
-if {msg === prefix + `HELP` || msg === prefix + `COMMANDS`} { // Checks to see if they soid help OR Commands
-message.channel.send{commandsList}
-}} ;
-
-
 
 
 // THIS  MUST  BE  THIS  WAY
