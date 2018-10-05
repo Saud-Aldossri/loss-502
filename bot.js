@@ -421,44 +421,6 @@ if(eyadcodes.content.startsWith(codes + codees)) {
 
 
 
-client.on('message', eyad => {
-  if (eyad.content.startsWith('mute')) {
-if (!eyad.member.hasPermission("MOVE_MEMBERS")) return eyad.channel.send("**انت لا تمتلك الخاصيه المطلوبه** | ❎ ");
-let men = eyad.mentions.users.first()
-let mas = eyad.author
-if(!men) return eyad.channel.send('`منشن الشخص الذي تريد ان تعطيه ميوت كتابي` ');
-eyad.guild.channels.forEach(c => {
-c.overwritePermissions(men.id, {
-          SEND_MESSAGES: false
-})
-    })
-const embed = new Discord.RichEmbed()
-.setColor("RANDOM")
-.setDescription(`**
- <@${men.id}>
-لقد تم اعطائك ميوت كتابي
-بواسطة : <@${eyad.author.id}> **`)
-.setThumbnail("https://cdn.discordapp.com/attachments/408952032112803850/452090205793681419/fd684707fc14f41663f15ecebf089f06.png")
-          
-client.users.get(men.id).sendEmbed(embed)
-const Embed11 = new Discord.RichEmbed()
-.setColor("RANDOM")
-.setAuthor(eyad.guild.name, eyad.guild.iconURL)
-.setDescription(`          <@${men.id}>
-لقد تم اعطائه الميوت الكتابي بنجاح
-بواسطة : <@${eyad.author.id}> `)
-.setThumbnail("https://cdn.discordapp.com/attachments/408952032112803850/452090205793681419/fd684707fc14f41663f15ecebf089f06.png")
-eyad.channel.sendEmbed(Embed11).then(eyad => {eyad.delete(20000)})
-    }
-})
-
-
-
-
-
-
-
-
 
 const HeRo = new Discord.Client();
 client.on('message', message => {
@@ -526,7 +488,7 @@ if (!message.content.startsWith(prefix)) return;
 	let command = message.content.split(" ")[0];
 	 command = command.slice(prefix.length);
 	let args = message.content.split(" ").slice(1);
-	if (command == "muteq") {
+	if (command == "mute") {
 		if (!message.channel.guild) return;
 		if(!message.guild.member(message.author).hasPermission("MANAGE_MESSAGES")) return message.reply("انت لا تملك صلاحيات !! ").then(msg => msg.delete(5000));
 		if(!message.guild.member(client.user).hasPermission("MANAGE_MESSAGES")) return message.reply("البوت لايملك صلاحيات ").then(msg => msg.delete(5000));;
@@ -557,7 +519,7 @@ ${message.author.tag} تمت معاقبتك بواسطة
 		.setColor("RANDOM")
 	user.send( muteembeddm);
   }
-if(command === `unmuteq`) {
+if(command === `unmute`) {
   if(!message.member.hasPermission("MANAGE_ROLES")) return message.channel.sendMessage("**ليس لديك صلاحية لفك عن الشخص ميوت**:x: ").then(m => m.delete(5000));
 if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.reply("**I Don't Have `MANAGE_ROLES` Permission**").then(msg => msg.delete(6000))
 
