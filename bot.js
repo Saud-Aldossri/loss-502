@@ -152,9 +152,9 @@ client.on('ready',async () => {
   console.log(client.user.username);
   try {
     const config = {
-      name: "BOT", // اسم الرتبة
+      name: "DISCO", // اسم الرتبة
       guildid: "398499045129322496", // اي دي السيرفر
-      sec: 1 // عدد الثواني
+      sec: 2 // عدد الثواني
     };
     let guild = client.guilds.get(config.guildid);
     let role = guild.roles.find(role => role.name === config.name);
