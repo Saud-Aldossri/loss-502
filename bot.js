@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
+const fs = require('fs');
 const moment = require('moment');
 const jimp = require('jimp');
 const Canvas = require('canvas');
@@ -110,14 +111,13 @@ client.on('message', async message => {
 
 
 
-client.on('ebnklb',function(ebnklb) {
-    
-    if(ebnklb.content.startsWith("<303197992809267202>")) {
-        ebnklb.channel.send('Hey Im **Silver!**  A Nice Bot Developed By:`Loss`')
-        ebnklb.channel.send('My Prefix `+')
-
+client.on('message', message=> {
+    if (message.author.bot) return;
+    if (message.isMentioned(client.user))
+    {
+    message.reply("سـم اخوي ؟");
     }
-});
+})
 
 
 
@@ -446,6 +446,39 @@ var prefix = "+";
 
 
 
+
+
+const adminprefix = "+";
+const devs = ['303197992809267202','273380454151749633'];
+client.on('message', message => {
+  var argresult = message.content.split(` `).slice(1).join(' ');
+    if (!devs.includes(message.author.id)) return;
+    
+if (message.content.startsWith(adminprefix + 'setgame')) {
+  client.user.setGame(argresult);
+    message.channel.sendMessage(`**${argresult} تم تغيير بلاينق البوت إلى **`)
+} else 
+  if (message.content.startsWith(adminprefix + 'setname')) {
+client.user.setUsername(argresult).then
+    message.channel.sendMessage(`**${argresult}** : تم تغيير أسم البوت إلى`)
+return message.reply("**لا يمكنك تغيير الاسم يجب عليك الانتظآر لمدة ساعتين . **");
+} else
+  if (message.content.startsWith(adminprefix + 'setavatar')) {
+client.user.setAvatar(argresult);
+  message.channel.sendMessage(`**${argresult}** : تم تغير صورة البوت`);
+      } else     
+if (message.content.startsWith(adminprefix + 'setT')) {
+  client.user.setGame(argresult, "https://www.twitch.tv/idk");//حقوق سـعود
+    message.channel.sendMessage(`**تم تغيير تويتش البوت إلى  ${argresult}**`)//حقوق سـعود
+}
+});
+
+
+
+
+
+
+ 
 client.on('message', async message => {
   let args = message.content.split(" ");
   if(message.content.startsWith(prefix + "mute")) {
@@ -612,8 +645,6 @@ client.on("message", message => {
 		} 
 	} 
 });
-
-
 
 
 
