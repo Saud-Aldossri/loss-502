@@ -18,6 +18,21 @@ client.on('message', message => {
 
 
 
+client.on('ebnklb',function(ebnklb) {
+    
+    if(ebnklb.content.startsWith("<493400492156911616>")) {
+        ebnklb.channel.send('Hey Im **Silver!**  A Nice Bot Developed By:`Loss:502`')
+        ebnklb.channel.send('My Prefix `+`')
+
+    }
+});
+
+
+
+
+
+
+
  client.on('message', message => {
 
     if (message.content === "mc") {
