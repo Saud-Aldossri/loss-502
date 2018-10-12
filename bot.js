@@ -176,6 +176,56 @@ client.on('ready',async () => {
 
 
 
+const adminprefix = "p+";
+const devs = ['ايدي الشخص الي يقدر يغير' , 'ايدي الشخص الي يقدر يغير'' , 'ايدي الشخص الي يقدر يغير''];
+Codes.on('message', message => {//for dev
+  var argresult = message.content.split(` `).slice(1).join(' ');
+    if (!devs.includes(message.author.id)) return;
+
+if (message.content.startsWith(adminprefix + 'setgame')) {
+  Codes.user.setGame(argresult);   message.channel.sendMessage(`**${argresult} تم تغيير بلاينق البوت إلى **`)
+} else
+  if (message.content.startsWith(adminprefix + 'setname')) {
+Codes.user.setUsername(argresult).then
+    message.channel.sendMessage(`**${argresult}** : تم تغيير أسم البوت إلى`)
+return message.reply("**لا يمكنك تغيير الاسم يجب عليك الانتظآر لمدة ساعتين . **");
+} else
+  if (message.content.startsWith(adminprefix + 'setavatar')) {
+Codes.user.setAvatar(argresult);
+  message.channel.sendMessage(`**${argresult}** : تم تغير صورة البوت`);
+      } else
+if (message.content.startsWith(adminprefix + 'setT')) {
+  Rocket.user.setGame(argresult, "https://www.twitch.tv/faresgameryt");
+    message.channel.sendMessage(`**تم تغيير تويتش البوت إلى  ${argresult}**`)
+}
+
+Codes.on('message', message => {//restart
+    if(message.content === adminprefix + "restart") {
+          if (!devs.includes(message.author.id)) return;
+              message.channel.send(`⚠️ **الشخص الذي اعاد تشغيل البوت ${message.author.username}**`);
+            console.log(`⚠️ جاري اعادة تشغيل البوت... ⚠️`);
+            Rocket.destroy();
+            child_process.fork(__dirname + "/bot.js");
+            console.log(`تم اعادة تشغيل البوت`);
+        }
+
+
+    });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 client.on('message', message => {
 const prefix = "+";
   if (message.author.kick) return;
@@ -446,39 +496,6 @@ var prefix = "+";
 
 
 
-
-
-const adminprefix = "+";
-const devs = ['303197992809267202','273380454151749633'];
-client.on('message', message => {
-  var argresult = message.content.split(` `).slice(1).join(' ');
-    if (!devs.includes(message.author.id)) return;
-    
-if (message.content.startsWith(adminprefix + 'setgame')) {
-  client.user.setGame(argresult);
-    message.channel.sendMessage(`**${argresult} تم تغيير بلاينق البوت إلى **`)
-} else 
-  if (message.content.startsWith(adminprefix + 'setname')) {
-client.user.setUsername(argresult).then
-    message.channel.sendMessage(`**${argresult}** : تم تغيير أسم البوت إلى`)
-return message.reply("**لا يمكنك تغيير الاسم يجب عليك الانتظآر لمدة ساعتين . **");
-} else
-  if (message.content.startsWith(adminprefix + 'setavatar')) {
-client.user.setAvatar(argresult);
-  message.channel.sendMessage(`**${argresult}** : تم تغير صورة البوت`);
-      } else     
-if (message.content.startsWith(adminprefix + 'setT')) {
-  client.user.setGame(argresult, "https://www.twitch.tv/idk");//حقوق سـعود
-    message.channel.sendMessage(`**تم تغيير تويتش البوت إلى  ${argresult}**`)//حقوق سـعود
-}
-});
-
-
-
-
-
-
- 
 client.on('message', async message => {
   let args = message.content.split(" ");
   if(message.content.startsWith(prefix + "mute")) {
