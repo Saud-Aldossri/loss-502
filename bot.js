@@ -177,7 +177,7 @@ client.on('ready',async () => {
 
 
 const adminprefix = "p+";
-const devs = ['ايدي الشخص الي يقدر يغير' , 'ايدي الشخص الي يقدر يغير'' , 'ايدي الشخص الي يقدر يغير''];
+const devs = ['303197992809267202' , 'ايدي الشخص الي يقدر يغير'' , 'ايدي الشخص الي يقدر يغير''];
 Codes.on('message', message => {//for dev
   var argresult = message.content.split(` `).slice(1).join(' ');
     if (!devs.includes(message.author.id)) return;
