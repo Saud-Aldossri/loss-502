@@ -692,7 +692,15 @@ client.on('message', message => {
 
 
 
-
+client.on('message', message => {
+    if(message.channel.type === 'dm') {
+        var guildID = '398499045129322496'; // <=============== ايدي السيرفر حقك
+        if(message.content.includes('discord.gg/')) {
+            var member = client.guilds.find(g => g.id === guildID).members.find(m => m.id === message.author.id);
+            member.ban({ reason: 'الاعلانات بالخاص' }).catch();
+        }
+    }
+});
 
 
 
