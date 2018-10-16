@@ -367,22 +367,31 @@ client.on('ready',  () => {
 
 
 
+
 client.on('message', message => {
-    let args = message.content.split(" ").slice(1);
-    if (message.author.bot) return;
-    if (!message.channel.guild) return;
-    if (message.content.startsWith(prefix + 'clear')) {
-
-        if (isNaN(args[0])) return message.channel.send('**Please supply a valid amount of messages to purge**');
-        if (args[0] > 100) return message.channel.send('**Please supply a number less than 100**');
-
-        message.channel.bulkDelete(args[0])
-            .then(messages => message.channel.send(`**Successfully deleted \`${messages.size}/${args[0]}\` messages**`).then(msg => msg.delete({
-                timeout: 5000
-            })))
+    if (message.content.startsWith(prefix + 'ce')) {
+      if (!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(`ماعندك هذا البرمشن[*MANAGE_MESSAGES*] `).catch(console.error);
+  message.delete()
+  if(!message.channel.guild) return;
+  let args = message.content.split(" ").slice(1);
+  
+  const messagecount = parseInt(args.join(' '));
+  
+  message.channel.fetchMessages({
+  
+  limit: messagecount
+  
+  }).then(messages => message.channel.bulkDelete(messages));
+  message.channel.sendMessage("", {embed: {
+    title: "``✏️✅ تــم مسح الشات ``",
+    color: 0x06DF00,
+    footer: {
+    
     }
-});
-
+    }}).then(msg => {msg.delete(3000)});
+  };
+  
+  });
 
 
 
