@@ -18,19 +18,6 @@ client.on('message', message => {
 
 
 
-client.on('ebnklb',function(ebnklb) {
-    
-    if(ebnklb.content.startsWith("<493400492156911616>")) {
-        ebnklb.channel.send('Hey Im **Silver!**  A Nice Bot Developed By:`Loss:502`')
-        ebnklb.channel.send('My Prefix `+`')
-
-    }
-});
-
-
-
-
-
 
 
  client.on('message', message => {
@@ -104,24 +91,6 @@ client.on('message', message => {
 });
 
 
-
-
-
-client.on('message', async message => {
-  if(message.content.startsWith(prefix + "sugg")) {
-  await  message.channel.send(`اكتب اقتراحك الان`)
-    let filter = m => m.author.id === message.author.id
-      var text = '.';
-        let sugsa = message.channel.awaitMessages(filter, { max: 1, time: 60000})
-          .then(co => {
-            text = co.first().content
-
-              message.channel.send(`تم حفظ اقتراحك سيتم مراجعته من قبل الادارة`)
-                client.channels.get("492265800347156500").send(`${message.author.username}'s sug => ${text}`)
-
-              })
-            }
-          })
 
 
 
