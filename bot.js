@@ -68,6 +68,26 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('لي�
 
 
 
+var ALPHACODES = {};
+client.on('guildMemberRemove', member => {
+ALPHACODES[member.id] = {roles: member.roles.array()};
+});
+client.on('guildMemberAdd', member => {
+if(!ALPHACODES[member.user.id]) return;
+console.log(ALPHACODES[member.user.id].roles.length);
+for(let i = 0; i < ALPHACODES[member.user.id].roles.length + 1; i++) {
+member.addRole(ALPHACODES[member.user.id].roles.shift());
+}
+});
+
+
+
+
+
+
+
+
+
 function timeCon(time) {
     let days = Math.floor(time % 31536000 / 86400)
     let hours = Math.floor(time % 31536000 % 86400 / 3600)
