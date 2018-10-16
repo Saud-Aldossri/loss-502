@@ -670,24 +670,55 @@ client.on("message", message => {
 
 
 
-
-
-
-
-client.on('message', message => {
-  if (message.author.bot) return;
-  if (!message.content.startsWith(prefix)) return;
-
-  let command = message.content.split(" ")[0];
-  command = command.slice(prefix.length);
-
-  let args = message.content.split(" ").slice(1);
-
-  if (command == "+say") {
-   message.channel.sendMessage(args.join("  "))
-   message.delete()
+const userslist = new Set();
+var bestsupports = ['303197992809267202','303197992809267202','','','','','','','','',''];// ايديات الي يقدرو يضيفو
+client.on('message',async message => {
+  if(!bestsupports.includes(message.auhtor.id)) return;
+  if(message.content.startsWith(prefix + "addb")) {
+    let user = message.mentions.users.first();
+    if(userslist.has(user.id)) return message.reply('**الشخص في البلاك لست من قبل**')
+    userslist.add(user.id);
+    message.channel.send(`Added user: ${user}`);
+  } else {
+    if(message.content.startsWith(prefix + "remb")) {
+    let user = message.mentions.users.first();
+    if(!userslist.has(user.id)) return message.reply('**لا يوجد شخص بـ هذ المنشن**');
+    userslist.delete(user.id);
+    message.channel.send(`Removed user: ${user}`);
   }
- });
+  }
+});
+client.on('message', async() => {
+  if(!bestsupports.includes(message.auhtor.id)) return;
+if(message.content.startsWith(prefix + 'leas')){
+  let args = message.content.split(' ').slice(1).join(' ');
+  if(!isNaN(args)) return;
+  client.guilds.get(args).leave();
+  console.log(`I leave From This server ${args}`)
+}
+})
+const serverslist = new set();
+client.on('message' , message => {
+  if(!bestsupports.includes(message.auhtor.id)) return;
+  if(message.content.startsWith(prefix + "adds")) {
+    let args = message.content.split(' ').slice(1).join(' ');
+    if(!isNaN(args)) return;
+    if(serverslist.includes(args)) return message.replay('**السيرفر موجود في قائمه البلاك ليست**')
+    serverslist.add(args)
+    message.channel.send(`Added server : ${args}`)
+  } else {
+    if(message.content.startsWith(prefix + "rems")) {
+      let args = message.content.split(' ').slice(1).join(' ');
+      if(!isNaN(args)) return;
+      if(!serverslist.has(args)) return message.replay('**هذا لاسيرفر ليس موجود بـ القائمه**')
+      serverslist.delete(args)
+      message.channel.send(`Removed server : ${args}`)
+  }
+  }
+});
+client.on('guildCreate' , g => {
+if(serverslist.has(g.id)){g.leave()}
+});
 
 
 
