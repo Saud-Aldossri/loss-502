@@ -18,8 +18,6 @@ client.on('message', message => {
 
 
 
-
-
  client.on('message', message => {
 
     if (message.content === "mc") {
@@ -51,7 +49,6 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('لي�
 
 
   
-
 
 
 
@@ -91,6 +88,24 @@ client.on('message', message => {
 });
 
 
+
+
+
+client.on('message', async message => {
+  if(message.content.startsWith(prefix + "sugg")) {
+  await  message.channel.send(`اكتب اقتراحك الان`)
+    let filter = m => m.author.id === message.author.id
+      var text = '.';
+        let sugsa = message.channel.awaitMessages(filter, { max: 1, time: 60000})
+          .then(co => {
+            text = co.first().content
+
+              message.channel.send(`تم حفظ اقتراحك سيتم مراجعته من قبل الادارة`)
+                client.channels.get("492265800347156500").send(`${message.author.username}'s sug => ${text}`)
+
+              })
+            }
+          })
 
 
 
@@ -279,29 +294,55 @@ return;
 
 
 
+client.on('message', msg => { 
+    if (msg.content.startsWith(`+warn`)) {
+      if(!msg.member.hasPermission("MANAGE_MESSAGES")) return;
+       let args = msg.content.split(" ").slice(1);
+      if (!msg.mentions.members.first()) return msg.reply('منشن الشخص المحدد')
+      if (!args[0]) return msg.reply('اكتب السبب')
+      //غير اسم الروم او سوي روم بذا الاسم 
+      if (msg.guild.channels.find('name', 'admin-chat')) {
+        //اذا غيرت فوق غير هنا كمان 
+        msg.guild.channels.find('name', 'admin-chat').send(`
+      تم اعطائك انذار : ${msg.mentions.members.first()}
+      لأنك قمت بما يلي
+      ${args.join(" ").split(msg.mentions.members.first()).slice(' ')}
+      `)
+      }
+    }
+})
+
+
+
+
+  //كود استريمنق
+client.on('ready',  () => {
+            console.log(`back`);
+    client.user.setGame("", "https://www.twitch.tv/saudaldossri");
+});
+
+
+
+
+
+
 client.on('message', message => {
-    let log = message.guild.channels.find('name', 'log');
-    let reason = message.content.split(" ").slice(2).join(' ');
-    let p = message.mentions.members.first();
-    if(message.content.startsWith(prefix + "warn")){
-        if(!message.member.hasPermission("ADMINISTRATOR")) return message.reply(`**❌ | This Command is Just for Adminstration**`);
-            message.delete();
-        if(!p) return message.reply(`Mention a User!`);
-        if(reason.length < 1) return message.reply(`Set a reason!`)
-        var embed = new Discord.RichEmbed()
-        .setTitle(`New Warning!`)
-        .addField(`For`, `<@${p.user.id}>`)
-        .addField(`By`, `<@${message.author.id}>`)
-        .addField(`Reason`, reason)
-        .addField(`In Chat`, `<#${message.channel.id}>`)
-        .setColor("WHITE")
-        .setTimestamp()
-        .setFooter(" ")
-            message.channel.send(`${p} ` + reason)
-            message.delete();
-        log.send({embed})
+    let args = message.content.split(" ").slice(1);
+    if (message.author.bot) return;
+    if (!message.channel.guild) return;
+    if (message.content.startsWith(prefix + 'clear')) {
+
+        if (isNaN(args[0])) return message.channel.send('**Please supply a valid amount of messages to purge**');
+        if (args[0] > 100) return message.channel.send('**Please supply a number less than 100**');
+
+        message.channel.bulkDelete(args[0])
+            .then(messages => message.channel.send(`**Successfully deleted \`${messages.size}/${args[0]}\` messages**`).then(msg => msg.delete({
+                timeout: 5000
+            })))
     }
 });
+
+
 
 
 
@@ -604,6 +645,7 @@ client.on("message", message => {
 		} 
 	} 
 });
+
 
 
 
