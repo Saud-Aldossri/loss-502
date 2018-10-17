@@ -93,7 +93,7 @@ client.on('message', message => {
 
 client.on('message', async message => {
   if(message.content.startsWith(prefix + "sugg")) {
-  await  message.channel.send(`اكتب اقتراحك الان`)
+  await  message.channel.send(`اكتب اقتراحك الان بسطر واحد`)
     let filter = m => m.author.id === message.author.id
       var text = '.';
         let sugsa = message.channel.awaitMessages(filter, { max: 1, time: 60000})
@@ -101,7 +101,7 @@ client.on('message', async message => {
             text = co.first().content
 
               message.channel.send(`تم حفظ اقتراحك سيتم مراجعته من قبل الادارة`)
-                client.channels.get("492265800347156500").send(`${message.author.username}'s sug => ${text}`)
+                client.channels.get("502056234506256384").send(`${message.author.username}'s sug => ${text}`)
 
               })
             }
@@ -294,38 +294,6 @@ return;
 
 
 
-client.on('message', msg => { 
-    if (msg.content.startsWith(`+warn`)) {
-      if(!msg.member.hasPermission("MANAGE_MESSAGES")) return;
-       let args = msg.content.split(" ").slice(1);
-      if (!msg.mentions.members.first()) return msg.reply('منشن الشخص المحدد')
-      if (!args[0]) return msg.reply('اكتب السبب')
-      //غير اسم الروم او سوي روم بذا الاسم 
-      if (msg.guild.channels.find('name', 'admin-chat')) {
-        //اذا غيرت فوق غير هنا كمان 
-        msg.guild.channels.find('name', 'admin-chat').send(`
-      تم اعطائك انذار : ${msg.mentions.members.first()}
-      لأنك قمت بما يلي
-      ${args.join(" ").split(msg.mentions.members.first()).slice(' ')}
-      `)
-      }
-    }
-})
-
-
-
-
-  //كود استريمنق
-client.on('ready',  () => {
-            console.log(`back`);
-    client.user.setGame("", "https://www.twitch.tv/saudaldossri");
-});
-
-
-
-
-
-
 
 client.on("message", message => {
   let men = message.mentions.users.first();
@@ -454,123 +422,6 @@ if (message.content.startsWith(adminprefix + 'setT')) {
 
 
 
- 
-client.on('message', async message => {
-  let args = message.content.split(" ");
-  if(message.content.startsWith(prefix + "mute")) {
-    if(!message.member.hasPermission("MANAGE_ROLES")) return message.reply('# - ملحوظة :  يجب ان يكون لديك برمشن أداري . ').then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
-
-    if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.reply('# - ملحوظة : يجب ان يكون البوت لديه برمشن أداري').then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
-
-    let mention = message.mentions.members.first();
-    if(!mention) return message.reply('# - ملحوظة : يجب ان تقوم بمنشن شخص معين .').then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
-
-    if(mention.highestRole.position >= message.guild.member(message.author).highestRole.positon) return message.reply('# - ملحوظة : لا يمكنك اعطاء ميوت لشخص اعلي من رتبتك .').then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
-    if(mention.highestRole.positon >= message.guild.member(client.user).highestRole.positon) return message.reply('# - ملحوظه : لا يمكنك اعطاء ميوت لشخص اعلي من رتبتك').then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
-    if(mention.id === message.author.id) return message.reply('# - ملحوظه : لا يمكنك ان تعطي ميوت لنفسك .').then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
-
-    let duration = args[2];
-    if(!duration) return message.reply('# - ملحوظه : يجب ان تضع وقت .').then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
-
-    if(isNaN(duration)) return message.reply('# - ملحوظه : يجب تحديد وقت زمني صحيح').then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
-
-    let sbb = message.content.split(" ").slice(3).join(" ");
-    if(!sbb) sbb = "غير معروف .";
-
-    let thisEmbed = new Discord.RichEmbed()
-    .setAuthor(mention.user.username, mention.user.avatarURL)
-    .setTitle('# - لقد تم أعطائك ميوت .')
-    .setThumbnail(mention.user.avatarURL)
-    .addField('# - السيرفر',message.guild.name,true)
-    .addField('# - تم اعطائك ميوت بواسطة',message.author,true)
-    .addField('# - السبب',reason)
-
-    let role = message.guild.roles.find('name', 'Muted') || message.guild.roles.get(r => r.name === 'Muted');
-    if(!role) try {
-      message.guild.createRole({
-        name: "Muted",
-        permissions: 0
-      }).then(r => {
-        message.guild.channels.forEach(c => {
-          c.overwritePermissions(r , {
-            SEND_MESSAGES: false,
-            READ_MESSAGES_HISTORY: false,
-            ADD_REACTIONS: false
-          });
-        });
-      });
-    } catch(e) {
-      console.log(e.stack);
-    }
-    mention.addRole(role).then(() => {
-      mention.send(thisEmbed);
-      message.channel.send(`**:white_check_mark: ${mention.user.username} Muted ! :zipper_mouth:  **  `);
-      mention.setMute(true);
-    });
-    setTimeout(() => {
-      if(duration === 0) return;
-      if(!mention.has.roles(role)) return;
-      mention.setMute(false);
-      mention.removeRole(role);
-      message.channel.send(`**:white_check_mark: ${mention.user.username} Unmuted **   `);
-    },duration * 60000);
-  } else if(message.content.startsWith(prefix + "unmute")) {
-    let mention = message.mentions.members.first();
-    let role = message.guild.roles.find('name', 'Muted') || message.guild.roles.get(r => r.name === 'Muted');
-    if(!message.member.hasPermission("MANAGE_ROLES")) return message.reply('# - ملحوظة :  يجب ان يكون لديك برمشن أداري . ').then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
-
-    if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.reply('# - ملحوظة : يجب ان يكون البوت لديه برمشن أداري').then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
-
-    if(!mention) return message.reply('# - ملحوظه : يجب منشن شخص لفك الميوت عنهه .').then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
-
-      mention.removeRole(role);
-      mention.setMute(false);
-      message.channel.send(`**:white_check_mark: ${mention.user.username} Unmuted ! **  `);
-  }
-});
-
-
-
-
-
-client.on("message", message => { // Leaked by [ @Loss ]
-    if(message.content.startsWith('>system-man3')) {
-      message.channel.send(`**الخطوات المطلوبة لتشغيل مانع التهكير\n1- رفع رتبه البوت تحت رتبة صاحب السيرفر مباشرا : http://prntscr.com/k5afdc \n2-اعطاء البوت صلاحية ADMINISTRATOR : http://prntscr.com/k5afpd \n وهكذا تم تفعيل مانع التهكير بنجاح وبلا اي مشاكل اذا واجهت اي مشكله توجه لسيرفر الدعم** :white_check_mark: `)
-    }
-  });
 
 
 
